@@ -47,6 +47,9 @@ describe("Given I am connected as an employee", () => {
 
   describe("When I click on the New Bill button", () => {
     test("The new bill page must to be appear", () => {
+      const onNavigate = (pathname) => {
+        document.body.innerHTML = ROUTES({ pathname });
+      };
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,
       });
@@ -57,9 +60,7 @@ describe("Given I am connected as an employee", () => {
         })
       );
       document.body.innerHTML = BillsUI({ data: bills });
-      const onNavigate = (pathname) => {
-        document.body.innerHTML = ROUTES({ pathname });
-      };
+
       const getBills = new Bills({
         document,
         onNavigate,
@@ -78,6 +79,9 @@ describe("Given I am connected as an employee", () => {
 
   describe("When I click on the eye icon", () => {
     test("The modal must to be appear", () => {
+      const onNavigate = (pathname) => {
+        document.body.innerHTML = ROUTES({ pathname });
+      };
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,
       });
@@ -88,9 +92,7 @@ describe("Given I am connected as an employee", () => {
         })
       );
       document.body.innerHTML = BillsUI({ data: bills });
-      const onNavigate = (pathname) => {
-        document.body.innerHTML = ROUTES({ pathname });
-      };
+
       const getBills = new Bills({
         document,
         onNavigate,
